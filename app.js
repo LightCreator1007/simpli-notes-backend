@@ -5,6 +5,13 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 const app = express();
 
+console.log(process.env.CLIENT_URL);
+
+app.use(express.static("./uploads"));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(cookieParser());
+
 app.use(
   cors({
     origin: ["https://simpli-notes-2.vercel.app", "http://localhost:5173"],
@@ -19,13 +26,6 @@ app.use((req, res, next) => {
   console.log("Incoming:", req.method, req.path, "Origin:", req.headers.origin);
   next();
 });
-
-console.log(process.env.CLIENT_URL);
-
-app.use(express.static("./uploads"));
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
-app.use(cookieParser());
 
 //routes
 app.use("/api/user", userRouter);
