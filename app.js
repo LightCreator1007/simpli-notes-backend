@@ -7,11 +7,18 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["https://simpli-notes-2.vercel.app/", "http://localhost:5173"],
+    origin: ["https://simpli-notes-2.vercel.app", "http://localhost:5173"],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     credentials: true,
   })
 );
+
+app.options("*", cors());
+
+app.use((req, res, next) => {
+  console.log("Incoming:", req.method, req.path, "Origin:", req.headers.origin);
+  next();
+});
 
 console.log(process.env.CLIENT_URL);
 
