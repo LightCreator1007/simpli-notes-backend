@@ -20,8 +20,6 @@ app.use(
   })
 );
 
-app.options("*", cors());
-
 app.use((req, res, next) => {
   console.log("Incoming:", req.method, req.path, "Origin:", req.headers.origin);
   next();
