@@ -91,6 +91,7 @@ const login = asyncHandler(async (req, res) => {
   const options = {
     httpOnly: true,
     secure: true,
+    sameSite: "None",
   };
   return res
     .status(200)
@@ -154,6 +155,7 @@ const renewSession = asyncHandler(async (req, res) => {
     const options = {
       httpOnly: true,
       secure: true,
+      sameSite: "None",
     };
     return res
       .status(200)
