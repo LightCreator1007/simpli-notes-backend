@@ -91,7 +91,9 @@ const login = asyncHandler(async (req, res) => {
   const options = {
     httpOnly: true,
     secure: true,
-    sameSite: "None",
+    sameSite: "none",
+    domain: "simpli-notes-2.vercel.app/",
+    path: "/",
   };
   return res
     .status(200)
@@ -155,7 +157,9 @@ const renewSession = asyncHandler(async (req, res) => {
     const options = {
       httpOnly: true,
       secure: true,
-      sameSite: "None",
+      sameSite: "none",
+      domain: "simpli-notes-2.vercel.app/",
+      path: "/",
     };
     return res
       .status(200)
